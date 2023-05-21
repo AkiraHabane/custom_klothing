@@ -96,7 +96,7 @@
                     <div class="card-body p-4">
                         <div class="">
                             <!-- Product name-->
-                            <h5 class="fw-bolder"><?php echo $row['title'] ?></h5>
+                            <h5 class="fw-bolder"><?php echo $row['product'] ?></h5>
                             <!-- Product price-->
                             <?php foreach($_inv as $k=> $v): ?>
                                 <span><b>Price: </b><?php echo $v ?></span>
