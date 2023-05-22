@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 08:54 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: May 22, 2023 at 04:47 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,14 +34,7 @@ CREATE TABLE `cart` (
   `price` double NOT NULL,
   `quantity` int(30) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `client_id`, `inventory_id`, `price`, `quantity`, `date_created`) VALUES
-(4, 1, 1, 2500, 1, '2021-07-16 13:48:00');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -55,17 +48,16 @@ CREATE TABLE `categories` (
   `description` text DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `category`, `description`, `status`, `date_created`) VALUES
-(1, 'Educational', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non ultrices tortor. Sed at ligula non lectus tempor bibendum a nec ante. Maecenas iaculis vitae nisi eu dictum. Duis sit amet enim arcu. Etiam blandit vulputate magna, non lobortis velit pharetra vel. Morbi sollicitudin lorem sed augue suscipit, eu commodo tortor vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent eleifend interdum est, at gravida erat molestie in. Vestibulum et consectetur dui, ac luctus arcu. Curabitur et viverra elit. Cras ac eleifend ipsum, ac suscipit leo. Vivamus porttitor ac risus eu ultricies. Morbi malesuada mi vel luctus sagittis. Ut vestibulum porttitor est, id rutrum libero. Mauris at lacus vehicula, aliquam purus quis, pharetra lorem.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Proin consectetur massa ut quam molestie porta. Donec sit amet ligula odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi ex sapien, pulvinar ac arcu at, luctus scelerisque nibh. In dolor velit, pellentesque eu blandit a, mollis ac neque. Fusce tortor lectus, aliquam et eleifend id, aliquet ut libero. Nunc scelerisque vulputate turpis quis volutpat. Vivamus malesuada sem in dapibus aliquam. Vestibulum imperdiet, nulla vitae pharetra pretium, magna felis placerat libero, quis tincidunt felis diam nec nisi. Sed scelerisque ullamcorper cursus. Suspendisse posuere, velit nec rhoncus cursus, urna sapien consectetur est, et lacinia odio leo nec massa. Nam vitae nunc vitae tortor vestibulum consequat ac quis risus. Sed finibus pharetra orci, id vehicula tellus eleifend sit amet.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Morbi id ante vel velit mollis egestas. Suspendisse pretium sem urna, vitae placerat turpis cursus faucibus. Ut dignissim molestie blandit. Phasellus pulvinar, eros id ultricies mollis, lectus velit viverra mi, at venenatis velit purus id nisi. Duis eu massa lorem. Curabitur sed nibh felis. Donec faucibus, nulla at faucibus blandit, mi justo efficitur dui, non mattis nisl purus non lacus. Maecenas vel congue tellus, in convallis nisi. Curabitur faucibus interdum massa, eu facilisis ligula pretium quis. Nunc eleifend orci nec volutpat tincidunt.&lt;/p&gt;', 1, '2021-07-16 09:08:44'),
-(2, 'Fiction', '&lt;p&gt;Sample 102&lt;/p&gt;', 1, '2021-07-16 09:09:25'),
-(3, 'Novels', '&lt;p&gt;Sample 103&lt;/p&gt;', 1, '2021-07-16 09:09:46'),
-(4, 'Sample Category', '&lt;p&gt;Sample Category 104&lt;/p&gt;', 1, '2021-07-16 11:33:52');
+(5, 'Jackets', '&lt;p&gt;&lt;b&gt;Made with 100% Cotton.&lt;/b&gt;&lt;br&gt;&lt;/p&gt;', 1, '2023-05-20 15:03:54'),
+(6, 'Shirts', '&lt;p&gt;&lt;b&gt;Made with 100% Cotton.&lt;/b&gt;&lt;br&gt;&lt;/p&gt;', 1, '2023-05-20 15:04:56'),
+(7, 'Hoodies', '&lt;p&gt;&lt;b&gt;Made with 100% Cotton.&lt;/b&gt;&lt;br&gt;&lt;/p&gt;', 1, '2023-05-20 15:05:35');
 
 -- --------------------------------------------------------
 
@@ -83,14 +75,17 @@ CREATE TABLE `clients` (
   `password` text NOT NULL,
   `default_delivery_address` text NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `clients`
 --
 
 INSERT INTO `clients` (`id`, `firstname`, `lastname`, `gender`, `contact`, `email`, `password`, `default_delivery_address`, `date_created`) VALUES
-(1, 'John', 'Smith', 'Male', '091023456789', 'jsmith@sample.com', '1254737c076cf867dc53d60a0364f38e', 'Sample Address', '2021-07-16 10:34:48');
+(2, 'May', 'Cee', 'Female', '09207215112', 'maycee@gmail.com', '45cc96f18cff61eb19121c6e29c6bfdf', '1212 Tondo\r\nTondo', '2023-05-18 17:24:15'),
+(3, 'Ana', 'Castro', 'Male', '09123456789', 'anacastro@gmail.com', '3f8243ea4d1840079c9b95c0981c07df', '1212 Tondo\r\nManila', '2023-05-18 17:32:06'),
+(4, 'Van', 'Castro', 'Female', '09123456789', 'vancastro@gmail.com', '3f8243ea4d1840079c9b95c0981c07df', '1212 Tondo\r\nManila', '2023-05-21 16:15:45'),
+(5, 'Joselito Joshua', 'Abrera', 'Male', '09208067060', 'joshuaabrera31@gmail.com', 'a23dfb2a09180bceebb8305a46c86f0a', 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', '2023-05-21 22:17:33');
 
 -- --------------------------------------------------------
 
@@ -105,7 +100,7 @@ CREATE TABLE `inventory` (
   `price` float NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `inventory`
@@ -113,9 +108,9 @@ CREATE TABLE `inventory` (
 
 INSERT INTO `inventory` (`id`, `product_id`, `quantity`, `price`, `date_created`, `date_updated`) VALUES
 (1, 1, 50, 2500, '2021-07-16 10:02:39', NULL),
-(2, 2, 20, 3500, '2021-07-16 10:09:08', NULL),
-(3, 3, 10, 2500, '2021-07-16 12:05:54', NULL),
-(4, 4, 50, 1999.99, '2021-07-16 13:12:10', NULL);
+(5, 5, 100, 250, '2023-05-20 16:41:52', '2023-05-21 17:00:17'),
+(6, 6, 20, 150, '2023-05-20 19:27:26', '2023-05-20 23:07:51'),
+(7, 7, 100, 200, '2023-05-21 17:00:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -134,15 +129,19 @@ CREATE TABLE `orders` (
   `paid` tinyint(1) NOT NULL DEFAULT 0,
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id`, `client_id`, `delivery_address`, `payment_method`, `order_type`, `amount`, `status`, `paid`, `date_created`, `date_updated`) VALUES
-(1, 1, 'Sample Address', 'Online Payment', 2, 8500, 0, 1, '2021-07-16 11:14:58', NULL),
-(4, 1, 'Sample Address', 'Online Payment', 2, 5000, 5, 1, '2021-07-16 13:13:42', '2021-07-16 13:52:56');
+(26, 3, '1212 Tondo\r\nManila', 'cod', 2, 200, 3, 1, '2023-05-21 18:27:44', '2023-05-21 22:19:56'),
+(27, 4, '1212 Tondo\r\nManila', 'Online Payment', 2, 600, 3, 1, '2023-05-21 18:29:18', '2023-05-21 18:29:56'),
+(28, 1, '', 'Online Payment', 2, 150, 0, 1, '2023-05-21 22:16:52', NULL),
+(29, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'Online Payment', 2, 600, 3, 1, '2023-05-21 22:18:03', '2023-05-21 22:19:42'),
+(30, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'Online Payment', 2, 250, 0, 1, '2023-05-21 23:01:02', NULL),
+(31, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'Online Payment', 2, 200, 2, 1, '2023-05-22 20:59:41', '2023-05-22 21:00:19');
 
 -- --------------------------------------------------------
 
@@ -157,16 +156,27 @@ CREATE TABLE `order_list` (
   `quantity` int(30) NOT NULL,
   `price` double NOT NULL,
   `total` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_list`
 --
 
 INSERT INTO `order_list` (`id`, `order_id`, `product_id`, `quantity`, `price`, `total`) VALUES
-(1, 1, 2, 1, 3500, 3500),
-(2, 1, 1, 2, 2500, 5000),
-(3, 4, 3, 2, 2500, 5000);
+(5, 6, 5, 1, 250, 250),
+(6, 6, 6, 2, 150, 300),
+(7, 7, 5, 1, 250, 250),
+(10, 24, 5, 9, 250, 2250),
+(12, 26, 7, 1, 200, 200),
+(13, 27, 5, 1, 250, 250),
+(14, 27, 6, 1, 150, 150),
+(15, 27, 7, 1, 200, 200),
+(16, 28, 6, 1, 150, 150),
+(17, 29, 5, 1, 250, 250),
+(18, 29, 6, 1, 150, 150),
+(19, 29, 7, 1, 200, 200),
+(20, 30, 5, 1, 250, 250),
+(21, 31, 7, 1, 200, 200);
 
 -- --------------------------------------------------------
 
@@ -178,22 +188,21 @@ CREATE TABLE `products` (
   `id` int(30) NOT NULL,
   `category_id` int(30) NOT NULL,
   `sub_category_id` int(30) NOT NULL,
-  `title` varchar(250) NOT NULL,
-  `author` text NOT NULL,
+  `product` varchar(250) NOT NULL,
+  `brandname` text NOT NULL,
   `description` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `category_id`, `sub_category_id`, `title`, `author`, `description`, `status`, `date_created`) VALUES
-(1, 1, 1, 'The Joy of PHP: A Beginner\\\'s Guide to Programming', 'Alan Forbes', '&lt;p&gt;&lt;span style=\\\\\\&quot;text-align: justify;\\\\\\&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non ultrices tortor. Sed at ligula non lectus tempor bibendum a nec ante. Maecenas iaculis vitae nisi eu dictum. Duis sit amet enim arcu. Etiam blandit vulputate magna, non lobortis velit pharetra vel. Morbi sollicitudin lorem sed augue suscipit, eu commodo tortor vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent eleifend interdum est, at gravida erat molestie in. Vestibulum et consectetur dui, ac luctus arcu. Curabitur et viverra elit. Cras ac eleifend ipsum, ac suscipit leo. Vivamus porttitor ac risus eu ultricies. Morbi malesuada mi vel luctus sagittis. Ut vestibulum porttitor est, id rutrum libero. Mauris at lacus vehicula, aliquam purus quis, pharetra lorem.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-07-16 09:43:11'),
-(2, 1, 1, 'Modern PHP: New Features and Good Practices', 'Josh Lockhart', '&lt;p&gt;&lt;span style=\\\\\\\\\\\\\\&quot;text-align: justify;\\\\\\\\\\\\\\&quot;&gt;Proin consectetur massa ut quam molestie porta. Donec sit amet ligula odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi ex sapien, pulvinar ac arcu at, luctus scelerisque nibh. In dolor velit, pellentesque eu blandit a, mollis ac neque. Fusce tortor lectus, aliquam et eleifend id, aliquet ut libero. Nunc scelerisque vulputate turpis quis volutpat. Vivamus malesuada sem in dapibus aliquam. Vestibulum imperdiet, nulla vitae pharetra pretium, magna felis placerat libero, quis tincidunt felis diam nec nisi. Sed scelerisque ullamcorper cursus. Suspendisse posuere, velit nec rhoncus cursus, urna sapien consectetur est, et lacinia odio leo nec massa. Nam vitae nunc vitae tortor vestibulum consequat ac quis risus. Sed finibus pharetra orci, id vehicula tellus eleifend sit amet.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-07-16 10:08:53'),
-(3, 1, 2, 'English Grammar in Use', 'Raymond Murphy, Surai Pongtongcharoen', '&lt;p&gt;&lt;span style=\\&quot;text-align: justify;\\&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non ultrices tortor. Sed at ligula non lectus tempor bibendum a nec ante. Maecenas iaculis vitae nisi eu dictum. Duis sit amet enim arcu. Etiam blandit vulputate magna, non lobortis velit pharetra vel. Morbi sollicitudin lorem sed augue suscipit, eu commodo tortor vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent eleifend interdum est, at gravida erat molestie in. Vestibulum et consectetur dui, ac luctus arcu. Curabitur et viverra elit. Cras ac eleifend ipsum, ac suscipit leo. Vivamus porttitor ac risus eu ultricies. Morbi malesuada mi vel luctus sagittis. Ut vestibulum porttitor est, id rutrum libero. Mauris at lacus vehicula, aliquam purus quis, pharetra lorem.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-07-16 12:03:08'),
-(4, 1, 2, 'English Grammar for Dummies', 'Geraldine Woods', '&lt;p style=\\&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;\\&quot;&gt;Ut et urna sapien. Nulla lacinia sagittis felis id cursus. Etiam eget lacus quis enim aliquet dignissim. Nulla vel elit ultrices, venenatis quam sed, rutrum magna. Pellentesque ultricies non lorem hendrerit vestibulum. Maecenas lacinia pharetra nisi, at pharetra nunc placerat nec. Maecenas luctus dolor in leo malesuada, vel aliquet metus sollicitudin. Curabitur sed pellentesque sem, in tincidunt mi. Aliquam sodales aliquam felis, eget tristique felis dictum at. Proin leo nisi, malesuada vel ex eu, dictum pellentesque mauris. Quisque sit amet varius augue.&lt;/p&gt;&lt;p style=\\&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;\\&quot;&gt;Sed quis imperdiet est. Donec lobortis tortor id neque tempus, vel faucibus lorem mollis. Fusce ut sollicitudin risus. Aliquam iaculis tristique nunc vel feugiat. Sed quis nulla non dui ornare porttitor eu vitae nisi. Curabitur at quam ut libero convallis mattis vel eget mauris. Vivamus vitae lectus ligula. Nulla facilisi. Vivamus tristique maximus nulla, vel mollis felis blandit posuere. Curabitur mi risus, rutrum non magna at, molestie gravida magna. Aenean neque sapien, volutpat a ullamcorper nec, iaculis quis est.&lt;/p&gt;', 1, '2021-07-16 13:11:17');
+INSERT INTO `products` (`id`, `category_id`, `sub_category_id`, `product`, `brandname`, `description`, `status`, `date_created`) VALUES
+(5, 7, 9, 'Basic Hoodie', 'CustomKlothing', '&lt;p&gt;Made with 100% Cotton.&lt;/p&gt;', 1, '2023-05-20 16:40:35'),
+(6, 6, 13, 'DINO Shirt', 'CustomKlothing', '&lt;p&gt;Made with 100% Cotton.&lt;/p&gt;', 1, '2023-05-20 19:27:06'),
+(7, 6, 13, 'Game Over Shirt', 'CustomKlothing', '&lt;p&gt;&lt;b&gt;Made with 100% Cotton.&lt;/b&gt;&lt;/p&gt;', 1, '2023-05-21 16:54:29');
 
 -- --------------------------------------------------------
 
@@ -206,15 +215,19 @@ CREATE TABLE `sales` (
   `order_id` int(30) NOT NULL,
   `total_amount` double NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sales`
 --
 
 INSERT INTO `sales` (`id`, `order_id`, `total_amount`, `date_created`) VALUES
-(1, 3, 8500, '2021-07-16 11:18:12'),
-(2, 4, 5000, '2021-07-16 13:13:42');
+(10, 26, 200, '2023-05-21 18:27:45'),
+(11, 27, 600, '2023-05-21 18:29:20'),
+(12, 28, 150, '2023-05-21 22:16:52'),
+(13, 29, 600, '2023-05-21 22:18:03'),
+(14, 30, 250, '2023-05-21 23:01:02'),
+(15, 31, 200, '2023-05-22 20:59:41');
 
 -- --------------------------------------------------------
 
@@ -229,7 +242,7 @@ CREATE TABLE `sub_categories` (
   `description` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sub_categories`
@@ -242,7 +255,13 @@ INSERT INTO `sub_categories` (`id`, `parent_id`, `sub_category`, `description`, 
 (4, 2, 'Historical', '&lt;p&gt;Sample 104&lt;/p&gt;', 1, '2021-07-16 09:12:51'),
 (5, 3, 'Fantasy', '&lt;p&gt;Sample Sub 105&lt;/p&gt;', 1, '2021-07-16 09:13:28'),
 (6, 3, 'Action and Adventure', '&lt;p&gt;Sample Sub 106&lt;/p&gt;', 1, '2021-07-16 09:13:49'),
-(7, 4, 'Sub Cat 101', '&lt;p&gt;Sample Sub 107&lt;/p&gt;', 1, '2021-07-16 11:34:22');
+(7, 4, 'Sub Cat 101', '&lt;p&gt;Sample Sub 107&lt;/p&gt;', 1, '2021-07-16 11:34:22'),
+(8, 0, 'Men', '', 1, '2023-05-20 16:30:28'),
+(9, 7, 'Unisex Hoodies', '', 1, '2023-05-20 16:30:59'),
+(10, 5, 'Unisex Jackets', '', 1, '2023-05-20 16:31:26'),
+(11, 6, 'For Men', '', 1, '2023-05-20 16:32:10'),
+(12, 6, 'For Women', '', 1, '2023-05-20 16:32:25'),
+(13, 6, 'Unisex', '', 1, '2023-05-20 16:33:36');
 
 -- --------------------------------------------------------
 
@@ -254,7 +273,7 @@ CREATE TABLE `system_info` (
   `id` int(30) NOT NULL,
   `meta_field` text NOT NULL,
   `meta_value` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `system_info`
@@ -262,10 +281,10 @@ CREATE TABLE `system_info` (
 
 INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
 (1, 'name', 'Custom Klothing'),
-(6, 'short_name', 'CK'),
-(11, 'logo', 'uploads/1626397500_book_logo.jpg'),
+(6, 'short_name', 'Custom Klothing'),
+(11, 'logo', 'uploads/1684662780_logo.png'),
 (13, 'user_avatar', 'uploads/user_avatar.jpg'),
-(14, 'cover', 'uploads/1626397620_books.jpg');
+(14, 'cover', 'uploads/1684662300_banner.png');
 
 -- --------------------------------------------------------
 
@@ -284,16 +303,15 @@ CREATE TABLE `users` (
   `type` tinyint(1) NOT NULL DEFAULT 0,
   `date_added` datetime NOT NULL DEFAULT current_timestamp(),
   `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `avatar`, `last_login`, `type`, `date_added`, `date_updated`) VALUES
-(1, 'Adminstrator', 'Admin', 'admin', '0192023a7bbd73250516f069df18b500', 'uploads/1624240500_avatar.png', NULL, 1, '2021-01-20 14:02:37', '2021-06-21 09:55:07'),
-(4, 'John', 'Smith', 'jsmith', '1254737c076cf867dc53d60a0364f38e', NULL, NULL, 0, '2021-06-19 08:36:09', '2021-06-19 10:53:12'),
-(5, 'Claire', 'Blake', 'cblake', '4744ddea876b11dcb1d169fadf494418', NULL, NULL, 0, '2021-06-19 10:01:51', '2021-06-19 12:03:23');
+(1, 'Custom', 'Klothing', 'ckadmin', 'eae7215f4f9d074f466b278852bf3d27', 'uploads/1684664280_1684664100_logo.png', NULL, 1, '2021-01-20 14:02:37', '2023-05-21 18:19:03'),
+(4, 'Cyber', 'Knights', 'ckadmin', '59b0c15503b7b9531e66752428c073bd', 'uploads/1684664100_logo.png', NULL, 0, '2021-06-19 08:36:09', '2023-05-21 18:15:58');
 
 --
 -- Indexes for dumped tables
@@ -373,55 +391,55 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `system_info`
