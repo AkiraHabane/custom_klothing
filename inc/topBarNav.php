@@ -41,7 +41,7 @@
                         <li class="nav-item"><a class="nav-link" href="./?p=view_categories">All Categories</a></li>
                         <?php endif; ?>
                         <li class="nav-item"><a class="nav-link" href="customization/index.html">Personalize</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Generate</a></li>
+                        <li class="nav-item"><a class="nav-link" href="imagegeneration/test1.php">Generate</a></li>
                         <li class="nav-item"><a class="nav-link" href="./?p=about">About</a></li>
                     </ul>
                     <div class="d-flex align-items-center">
