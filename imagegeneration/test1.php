@@ -51,7 +51,7 @@
 
 				$headers = array();
 				$headers[] = 'Content-Type: application/json';
-				$headers[] = 'Authorization:Bearer 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';
+				$headers[] = 'Authorization:Bearer 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';
 				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 
@@ -60,6 +60,8 @@
 				curl_close($ch);
 
 				$decode = json_decode($result,true);
+
+				var_dump($decode); 
 
 				foreach($decode['data'] as $row){
 					
