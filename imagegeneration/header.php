@@ -1,5 +1,17 @@
 <?php
 session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "custom_klothing";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 $count = isset($_SESSION['userdata']['id']) ? $conn->query("SELECT SUM(quantity) as items from `cart` where client_id = " . $_SESSION['userdata']['id'])->fetch_assoc()['items'] : 0;
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
