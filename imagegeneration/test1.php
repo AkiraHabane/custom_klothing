@@ -16,7 +16,7 @@ if (isset($_POST['q'])) {
   curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
   $headers = array();
   $headers[] = 'Content-Type: application/json';
-  $headers[] = 'Authorization: Bearer API KEY HERE WOMAN';
+  $headers[] = 'Authorization: Bearer ';
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   $result = curl_exec($ch);
   curl_close($ch);

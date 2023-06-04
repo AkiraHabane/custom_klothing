@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 04:47 PM
+-- Generation Time: Jun 04, 2023 at 02:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,6 +35,14 @@ CREATE TABLE `cart` (
   `quantity` int(30) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `client_id`, `inventory_id`, `price`, `quantity`, `date_created`) VALUES
+(31, 5, 5, 250, 1, '2023-06-04 13:45:34'),
+(32, 5, 7, 200, 1, '2023-06-04 13:52:15');
 
 -- --------------------------------------------------------
 
@@ -140,8 +148,11 @@ INSERT INTO `orders` (`id`, `client_id`, `delivery_address`, `payment_method`, `
 (27, 4, '1212 Tondo\r\nManila', 'Online Payment', 2, 600, 3, 1, '2023-05-21 18:29:18', '2023-05-21 18:29:56'),
 (28, 1, '', 'Online Payment', 2, 150, 0, 1, '2023-05-21 22:16:52', NULL),
 (29, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'Online Payment', 2, 600, 3, 1, '2023-05-21 22:18:03', '2023-05-21 22:19:42'),
-(30, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'Online Payment', 2, 250, 0, 1, '2023-05-21 23:01:02', NULL),
-(31, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'Online Payment', 2, 200, 2, 1, '2023-05-22 20:59:41', '2023-05-22 21:00:19');
+(30, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'Online Payment', 2, 250, 3, 1, '2023-05-21 23:01:02', '2023-06-04 13:19:08'),
+(31, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'Online Payment', 2, 200, 3, 1, '2023-05-22 20:59:41', '2023-06-04 13:19:02'),
+(32, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'cod', 2, 750, 3, 1, '2023-06-04 13:14:28', '2023-06-04 13:19:23'),
+(33, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'cod', 1, 2500, 3, 1, '2023-06-04 13:15:06', '2023-06-04 13:19:18'),
+(34, 5, 'Lot 21 Block 29 Pegasus St. Phase 2 Palmera Springs, Bagumbong\r\nBarangay 173', 'cod', 1, 1450, 0, 0, '2023-06-04 13:35:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -176,7 +187,11 @@ INSERT INTO `order_list` (`id`, `order_id`, `product_id`, `quantity`, `price`, `
 (18, 29, 6, 1, 150, 150),
 (19, 29, 7, 1, 200, 200),
 (20, 30, 5, 1, 250, 250),
-(21, 31, 7, 1, 200, 200);
+(21, 31, 7, 1, 200, 200),
+(22, 32, 5, 3, 250, 750),
+(23, 33, 5, 10, 250, 2500),
+(24, 34, 5, 5, 250, 1250),
+(25, 34, 7, 1, 200, 200);
 
 -- --------------------------------------------------------
 
@@ -227,7 +242,10 @@ INSERT INTO `sales` (`id`, `order_id`, `total_amount`, `date_created`) VALUES
 (12, 28, 150, '2023-05-21 22:16:52'),
 (13, 29, 600, '2023-05-21 22:18:03'),
 (14, 30, 250, '2023-05-21 23:01:02'),
-(15, 31, 200, '2023-05-22 20:59:41');
+(15, 31, 200, '2023-05-22 20:59:41'),
+(16, 32, 750, '2023-06-04 13:14:28'),
+(17, 33, 2500, '2023-06-04 13:15:06'),
+(18, 34, 1450, '2023-06-04 13:35:20');
 
 -- --------------------------------------------------------
 
@@ -391,7 +409,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -415,13 +433,13 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -433,7 +451,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `sub_categories`
