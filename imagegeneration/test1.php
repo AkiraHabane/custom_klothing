@@ -16,7 +16,7 @@ if (isset($_POST['q'])) {
   curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
   $headers = array();
   $headers[] = 'Content-Type: application/json';
-  $headers[] = 'Authorization: Bearer ';
+  $headers[] = 'Authorization: Bearer INSERT API KEY HERE';
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   $result = curl_exec($ch);
   curl_close($ch);
@@ -52,7 +52,6 @@ if (isset($_POST['q'])) {
 
 <body>
   <div class="container">
-<<<<<<< Updated upstream
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <div class="row">
@@ -70,88 +69,6 @@ if (isset($_POST['q'])) {
       </div>
     </div>
   </div>
-=======
-		<div class="row">
-	  	<div class="col-md-8 offset-md-2">
-	  
-			<div class="row">
-				<div class="col-md-12 mt-5">
-					<form action="" method="post">
-						<input type="text" class="form-control" name="q" placeholder="Cute cat with funny face">
-					</form>
-				</div>
-			</div>
-			
-			
-	    </div>
-				<div class="col-md-10 offset-md-1">
-	  
-			<div class="row mt-5">
-				<?php 
-				if(isset($_POST['q'])){
-					$query = $_POST['q'];
-
-					$ar = array(
-						'prompt' => $query,
-						'n' => 4,
-						'size' => '256x256'
-					);
-
-					$data = json_encode($ar);
-
-					/////
-				$ch = curl_init();
-
-				curl_setopt($ch, CURLOPT_URL,"https://api.openai.com/v1/images/generations");
-				curl_setopt($ch, CURLOPT_POST, 1);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS,
-				$data);
-
-				$headers = array();
-				$headers[] = 'Content-Type: application/json';
-				$headers[] = 'Authorization:Bearer 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';
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-
-				$result = curl_exec($ch);
-
-				curl_close($ch);
-
-				$decode = json_decode($result,true);
-
-				var_dump($decode); 
-
-				foreach($decode['data'] as $row){
-					
-				
-
-
-               ?>
-
-			<div class="col-md-4">
-			<div class="card mb-3">
-			<div class="card-body text-center">
-			<div class="imagediv">
-			<img src="<?php echo $row['url']; ?>" alt="" class="img-fluid">
-			</div>
-
-			</div>
-			</div>
-			</div>
-
-			   <?php }
-
-} ?>
-			</div>
-			
-			
-	    </div>
-	    </div>
-	</div>
-	
-	
->>>>>>> Stashed changes
 </body>
 
 </html>
